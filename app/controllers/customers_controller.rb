@@ -1,8 +1,8 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_customer, only: [ :show, :edit, :update, :destroy]
   def index
     @q = Customer.includes(:post, :company).ransack(params[:q])
-    #検索結果に対して
     @customers = @q.result.page(params[:page])
   end
 
@@ -31,6 +31,11 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:id])
+    @comment = Comment.new
+    # @comments = Comment.where(customer_id: params[:id].to_i)
+    # 下記を追加
+    @comments = @customer.comments
   end
 
   def destroy
@@ -39,7 +44,6 @@ class CustomersController < ApplicationController
   end
 
   def set_customer
-    @customer = Customer.find(params[:id])
   end
 
   private

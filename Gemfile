@@ -33,6 +33,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'ransack'
+gem 'devise'
 gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
