@@ -9,6 +9,12 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+   <!-- 下記の1行を追加 -->
+   <%= render partial: 'layouts/header' %>
+
+   <!-- yieldをdivのcontainerで囲う -->
+   <div class="container">
+     <%= yield %>
+   </div>
+ </body>
 </html>
